@@ -1,0 +1,78 @@
+package day1_2;
+
+import java.util.Scanner;
+
+public class host {
+	static Product[] products = new Product[5];
+	
+	
+	public static void main(String[] args) {
+		int num=0;
+		String name="";
+		int count=0;
+		for (int i=0; i<5; i++) {
+			products[i].name="product"+i;
+			products[i].price=1000;
+		}
+			while(true) {
+				System.out.println("1. 입고");
+				System.out.println("2. 판매");
+				System.out.println("3. 환불");
+				System.out.println("4. 재고확인");
+				Scanner scan=new Scanner(System.in);
+				num=scan.nextInt();
+				if(num==1) {
+					System.out.println("상품이름과 개수를 입력하세요 (ex. product1 3)");
+					store(name, count);
+				}
+				else if(num==2) {
+					System.out.println("원하시는 상품의 이름과 개수를 입력하세요 (ex. product1 3)");
+					sale(name, count);
+				}
+				else if(num==3) {
+					System.out.println("환불할 상품의 이름과 개수를 입력하세요 (ex. product1 3)");
+					refund(name, count);
+				}
+				else if(num==4) {
+					check();
+				}
+			}
+	}
+
+	public static void store(String name, int num){
+		for (int i=0; i<5; i++) {
+			if(products[i].name==name) {
+				products[i].num+=num;
+				break;
+			}
+		}
+	}
+	
+	public static void sale(String name, int num){
+		for (int i=0; i<5; i++) {
+			if(products[i].name==name) {
+				System.out.println(products[i].price*num+"원 결제하겠습니다.");
+				products[i].num-=num;
+				break;
+			}
+		}
+		
+	}	
+	
+	public static void refund(String name, int num){
+		for (int i=0; i<5; i++) {
+			if(products[i].name==name) {
+				products[i].num+=num;
+				break;
+			}
+		}
+	}
+	
+	public static void check(){
+		System.out.print("상품 이름\t  상품 개수\n");
+		for (int i=0; i<5; i++) {
+			System.out.print(products[i].name+"\t"+products[i].num+"\n");
+			}
+	}
+	
+}

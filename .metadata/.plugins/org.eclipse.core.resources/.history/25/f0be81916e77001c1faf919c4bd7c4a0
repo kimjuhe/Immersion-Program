@@ -1,0 +1,14 @@
+package day1_5;
+
+public class User1 extends Thread{
+	private Calculator caculator;
+	
+	public void setCaculator(Calculator calculator) {
+		this.setName("User1");
+		this.caculator = caculator;
+	}
+	
+	public void run() {
+		caculator.setMemory(100);
+	}
+}
